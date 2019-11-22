@@ -1,0 +1,8 @@
+configuration-as-code:1.33
+workflow-multibranch:latest
+script-security:latest
+job-dsl:latest
+credentials:latest
+git:latest
+pipeline-model-definition:latest
+matrix-auth:latest

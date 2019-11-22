@@ -1,0 +1,20 @@
+jobs:
+  - script: >
+      multibranchPipelineJob('java-module') {
+          branchSources {
+              git {
+                  id('1203912930')
+                  remote('GIT_HTTP_REPO_URL')
+                  credentialsId('git-secret-creds')
+                  includes('*')
+              }
+          }
+          orphanedItemStrategy {
+              discardOldItems {
+                  numToKeep(20)
+              }
+          }
+          triggers {
+              periodic(1)
+          }
+      }

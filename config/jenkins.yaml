@@ -1,0 +1,42 @@
+jenkins:
+  numExecutors: 3
+  mode: NORMAL
+  scmCheckoutRetryCount: 3
+  labelString: "master"  
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: admin
+          password: ${admin-password}
+
+  authorizationStrategy:
+    globalMatrix:
+      permissions:
+        - "Overall/Read:anonymous"
+        - "Overall/Administer:authenticated"
+
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - usernamePassword:
+              scope: GLOBAL
+              id: "git-secret-creds"
+              username: ${git-creds-username}
+              password: ${git-creds-password}
+              description: "Username/Password Credentials for git project"
+
+tool:
+  jdk:
+    installations:
+      - name: openjdk-10
+        home: /var/jenkins_home/tools
+        properties:
+          - installSource:
+                installers:
+                  - zip:
+                      subdir: /var/jenkins_home/tools/jdk-10.0.2
+                      url: "https://download.java.net/java/GA/jdk10/10.0.2/19aef61b38124481863b1413dce1855f/13/openjdk-10.0.2_linux-x64_bin.tar.gz"
+
+
