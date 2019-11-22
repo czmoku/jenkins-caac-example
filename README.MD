@@ -1,4 +1,4 @@
-#Jenkins CaaC examplee
+# Jenkins CaaC examplee
 Example project of Jenkins CaaC
 ## What is here
 Sample usage oc Jenkins CaaC (Configuration as a Code). 
